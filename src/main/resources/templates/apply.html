@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apply - JobConnect</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container nav-content">
+        <div class="logo">JobConnect</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/jobs">Jobs</a>
+        </div>
+    </div>
+</nav>
+
+<div class="job-details">
+
+    <h1>Apply for Job</h1>
+
+    <form action="/apply" method="post">
+
+        <p>
+            <label>Name</label><br>
+            <input type="text" name="name" required>
+        </p>
+
+        <p>
+            <label>Email</label><br>
+            <input type="email" name="email" required>
+        </p>
+
+        <p>
+            <label>Resume</label><br>
+            <input type="text" name="resume" placeholder="Resume link">
+        </p>
+
+        <input type="hidden" name="jobId" th:value="${job.id}">
+
+        <button type="submit" class="apply-btn">
+            Submit Application
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

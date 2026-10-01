@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JobConnect - Find Your Dream Job</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="container nav-content">
+        <div class="logo">JobConnect</div>
+
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/jobs">Jobs</a>
+			<a href="/login" th:if="${session.user == null}">Login</a>
+			<a href="/register" th:if="${session.user == null}">Register</a>
+			<a href="/logout" th:if="${session.user != null}">Logout</a>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+
+    <h1>Find Your Dream Job</h1>
+
+    <p>Discover opportunities and build your career with JobConnect.</p>
+
+    <a href="/jobs" class="apply-btn">Browse Jobs</a>
+
+</div>
+
+</body>
+</html>

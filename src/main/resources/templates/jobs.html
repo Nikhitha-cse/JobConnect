@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>JobConnect - Jobs</title>
+	<Link rel="stylesheet" 
+	th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+	<nav class="navbar">
+
+	    <div class="container nav-content">
+
+	        <div class="logo">
+	            JobConnect
+	        </div>
+
+	        <div class="nav-links">
+	            <a href="/">Home</a>
+	            <a href="/jobs">Jobs</a>
+	            <a href="#">Login</a>
+	        </div>
+
+	    </div>
+
+	</nav>
+	
+	<h1 class="jobs-title">Find Your Next Opportunity</h1>
+	<p class="jobs-subtitle">Explore jobs and find the right opportunity for your career.</p>
+	
+	
+	<form action="/jobs" method="get" class="search-form">
+	    <input type="text" name="keyword" placeholder="Search jobs..." th:value="${keyword}">
+	    <button type="submit">Search</button>
+	</form>
+	
+
+	<div class="jobs-container">
+
+	    <div th:if="${#lists.isEmpty(jobs)}">
+	        <p>No jobs available.</p>
+	    </div>
+
+	    <div class="job-card" th:each="job : ${jobs}">
+
+	        <h2 th:text="${job.title}">Job Title</h2>
+
+	        <p>
+	            <span class="company">Company:</span>
+	            <span th:text="${job.company}">Company</span>
+	        </p>
+
+	        <p>
+	            📍 Location:
+	            <span th:text="${job.location}">Location</span>
+	        </p>
+
+	        <p>
+	            💰 Salary:
+	            <span th:text="${job.salary}">Salary</span>
+	        </p>
+
+		<a th:href="@{/jobs/{id}(id=${job.id})}" class="apply-btn">View Details</a>
+
+	    </div>
+
+	</div>
+
+</body>
+
+</html>
